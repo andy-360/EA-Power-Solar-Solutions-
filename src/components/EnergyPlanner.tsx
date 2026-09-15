@@ -3,7 +3,7 @@ import { appliances } from '../data/appliances'
 
 const EnergyPlanner = () => {
   const [selectedAppliances, setSelectedAppliances] = useState<string[]>([])
-  const [customAppliances, setCustomAppliances] = useState<Array<{watts: number, hours: number}>>([{watts: 0, hours: 0}])
+  const [customAppliances] = useState<Array<{watts: number, hours: number}>>([{watts: 0, hours: 0}])
 
   const toggleAppliance = (id: string) => {
     setSelectedAppliances(prev =>
