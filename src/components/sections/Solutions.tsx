@@ -1,16 +1,8 @@
 import { useState } from 'react'
-import { Sun, BatteryCharging, Workflow, Plug, Droplets, Wrench, ChevronDown } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 import { SOLUTIONS } from '@/data/content'
+import { SOLUTION_ICONS } from '@/data/icons'
 import CircuitDivider from '@/components/graphics/CircuitDivider'
-
-const ICONS: Record<string, typeof Sun> = {
-  'solar-pv': Sun,
-  battery: BatteryCharging,
-  hybrid: Workflow,
-  electrical: Plug,
-  'water-heating': Droplets,
-  maintenance: Wrench,
-}
 
 export default function Solutions() {
   const [expanded, setExpanded] = useState<string | null>(null)
@@ -29,15 +21,14 @@ export default function Solutions() {
 
         <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {SOLUTIONS.map((s) => {
-            const Icon = ICONS[s.id]
             const isOpen = expanded === s.id
             return (
               <div
                 key={s.id}
                 className="rounded-lg border border-navy-700 bg-navy-800/60 p-6 flex flex-col"
               >
-                <span className="grid place-items-center w-10 h-10 rounded-md bg-wire/15 text-wire-light">
-                  <Icon size={19} strokeWidth={2} />
+                <span className="grid place-items-center w-10 h-10 rounded-md bg-wire/15">
+                  <img src={SOLUTION_ICONS[s.id]} alt="" className="w-5 h-5" />
                 </span>
                 <h3 className="mt-5 font-display font-semibold text-paper text-lg">{s.title}</h3>
                 <p className="mt-2 text-sm text-paper/60 leading-relaxed">{s.description}</p>
